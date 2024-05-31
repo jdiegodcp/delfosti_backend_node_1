@@ -1,0 +1,24 @@
+version: "3.9"
+services:
+  mongo:
+    image: mongo:7.0.11
+    container_name: mongo_db_jd
+    ports:
+      - "27017:27017"
+    networks:
+    - app-network
+  backend:
+    build:
+      context: ./juan-de-la-cruz
+      dockerfile: Dockerfile
+    command: node build/index.js
+    ports:
+      - "3000:3000"
+    depends_on:
+      - mongo
+    networks:
+      - app-network
+
+networks:
+    app-network:
+        driver: bridge
