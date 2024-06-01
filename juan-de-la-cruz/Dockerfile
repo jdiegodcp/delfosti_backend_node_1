@@ -4,7 +4,7 @@ RUN mkdir /code
 
 WORKDIR /code
 
-COPY package.json tsconfig.json userController.js package-lock.json ./
+COPY package.json tsconfig.json ormconfig.json package-lock.json ./
 
 COPY src/ ./src
 
